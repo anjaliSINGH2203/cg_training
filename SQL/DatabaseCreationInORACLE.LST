@@ -1,0 +1,64 @@
+SQL> show user
+USER is "SCOTT"
+SQL> conn
+Enter user-name: System/Tiger
+ERROR:
+ORA-01017: invalid username/password; logon denied 
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> conn
+Enter user-name: system/anjali
+Connected.
+SQL> GRANT DBA TO SCOTT
+  2  ;
+
+Grant succeeded.
+
+SQL> CREATE TABLE STUDENTS
+  2  (
+  3  SID NUMBER,
+  4  SNAME VARCHAR(20),
+  5  MOBNO NUMBER(10) UNIQUE NOT NULL CHECK(LENGTH(MOBNO)=10),
+  6  SUB VARCHAR(15)
+  7  );
+
+Table created.
+
+SQL> DECS STUDENTS;
+SP2-0734: unknown command beginning "DECS STUDE..." - rest of line ignored.
+SQL> DESC STUDENTS;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                                NUMBER
+ SNAME                                              VARCHAR2(20)
+ MOBNO                                     NOT NULL NUMBER(10)
+ SUB                                                VARCHAR2(15)
+
+SQL> CREATE TABLE S
+  2  (
+  3  "PHONE NO" NUMBER
+  4  );
+
+Table created.
+
+SQL> DESC S
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PHONE NO                                           NUMBER
+
+SQL> INSERT INTO S
+  2  (
+  3  9685741230
+  4  );
+9685741230
+*
+ERROR at line 3:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> DROP TABLE S;
+
+Table dropped.
+
+SQL>  SPOOL OFF;

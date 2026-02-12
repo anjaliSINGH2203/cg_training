@@ -1,0 +1,196 @@
+SQL> SET PAGES 100 LINES 100
+SQL> 
+SQL> SELECT * FROM EMP
+  2  WHERE JOB='CLERK' AND SAL<1500;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+SQL> --NAME AND HIREDATE OF EMP WORKING AS MANAGER IN DEPT 30
+SQL> 
+SQL> SELECT ENAME, HIREDATE
+  2  FROM EMP
+  3  WHERE JOB='MANAGER' AND DEPTNO=30;
+
+ENAME      HIREDATE                                                                                 
+---------- ---------                                                                                
+BLAKE      01-MAY-81                                                                                
+
+SQL> --DETAILS OF EMP ALONG WITRH ANNUAL SAL IF THEY ARE WORKING IN DEPT 30 AS SALESMANAND THEIR ANNUAL SALARY SHOULD BE GREATER THAN 14000
+SQL> 
+SQL> SELECT *
+  2  
+SQL> 
+SQL> 
+SQL> SELECT EMPNO, ENAME, JOB,DEPTNO,COMM, HIREDATE, SAL, SAL*12 AS "ANNUAL_SAL"
+  2  WHERE DEPTNO=30 AND JOB='SALESMAN' AND SAL*12> 14000;
+WHERE DEPTNO=30 AND JOB='SALESMAN' AND SAL*12> 14000
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL>  SELECT EMPNO, ENAME, JOB,DEPTNO,COMM, HIREDATE, SAL, SAL*12 AS "ANNUAL_SAL"
+  2  FROM EMP
+  3  WHERE DEPTNO=30
+  4  AND JOB= 'SALESMAN'
+  5  AND SAL*12 >14000;
+
+     EMPNO ENAME      JOB           DEPTNO       COMM HIREDATE         SAL ANNUAL_SAL               
+---------- ---------- --------- ---------- ---------- --------- ---------- ----------               
+      7499 ALLEN      SALESMAN          30        300 20-FEB-81       1600      19200               
+      7521 WARD       SALESMAN          30        500 22-FEB-81       1250      15000               
+      7654 MARTIN     SALESMAN          30       1400 28-SEP-81       1250      15000               
+      7844 TURNER     SALESMAN          30          0 08-SEP-81       1500      18000               
+
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE DEPTNO=30 AND JOB= 'ANALYST';
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE SAL<1100 AND JOB='CLERK';
+
+ENAME                                                                                               
+----------                                                                                          
+SMITH                                                                                               
+JAMES                                                                                               
+
+SQL> 
+SQL> 
+SQL> SELECET ENAME, SAL, SAL*12 AS ANNUAL_SAL
+SP2-0734: unknown command beginning "SELECET EN..." - rest of line ignored.
+SQL> SELECT ENAME, SAL, SAL*12 AS ANNUAL_SAL, DEPTNO
+  2  FROM EMP
+  3  WHERE DEPTNO=20 AND SAL>1100 AND SAL*12>12000;
+
+ENAME             SAL ANNUAL_SAL     DEPTNO                                                         
+---------- ---------- ---------- ----------                                                         
+JONES            2975      35700         20                                                         
+SCOTT            3000      36000         20                                                         
+FORD             3000      36000         20                                                         
+
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT EMPNO,NAMES FROM EMP
+  2  WHERE JOB='MANAGER' AND DEPTNO=20;
+SELECT EMPNO,NAMES FROM EMP
+             *
+ERROR at line 1:
+ORA-00904: "NAMES": invalid identifier 
+
+
+SQL> SELECT * FROM EMP WHERE EMPNO=7902 OR EMPNO=7839;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT * FROM EMP
+  2  WHERE JOB='SALESMAN' OR JOB='MANAGER' OR JOB='CLERK';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+11 rows selected.
+
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE HIREDATE>'31-DEC-1981' AND HIREDATE<'01-JAN-1988';
+
+ENAME                                                                                               
+----------                                                                                          
+SCOTT                                                                                               
+ADAMS                                                                                               
+MILLER                                                                                              
+
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE SAL>1250 AND SAL<3000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+6 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE HIREDATE>'31-DEC-1981' AND (DEPTNO=10 OR DEPTNO=30);
+
+ENAME                                                                                               
+----------                                                                                          
+MILLER                                                                                              
+
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT ENAME SAL*12 AS ANNUAL_SAL
+  2  FROM EMP
+  3  WHERE (JOB='MANAGER' OR JOB='CLERK) AND (DEPTNO=10 OR DEPTNO=30);
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> 
+SQL> SELECT ENAME SAL*12 AS ANNUAL_SAL
+  2  FROM EMP
+  3  WHERE (JOB='MANAGER' OR JOB='CLERK') AND (DEPTNO=10 OR DEPTNO=30);
+SELECT ENAME SAL*12 AS ANNUAL_SAL
+                *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT ENAME,SAL*12 AS ANNUAL_SAL
+  2  FROM EMP
+  3  WHERE (JOB='MANAGER' OR JOB='CLERK') AND (DEPTNO=10 OR DEPTNO=30);
+
+ENAME      ANNUAL_SAL                                                                               
+---------- ----------                                                                               
+BLAKE           34200                                                                               
+CLARK           29400                                                                               
+JAMES           11400                                                                               
+MILLER          15600                                                                               
+
+SQL> SPOOL OFF;

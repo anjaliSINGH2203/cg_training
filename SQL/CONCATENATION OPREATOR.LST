@@ -1,0 +1,64 @@
+SQL> SELECT ENAME|| "IS EARNING SALARY AS " || SAL
+  2  FROM EMP;
+SELECT ENAME|| "IS EARNING SALARY AS " || SAL
+               *
+ERROR at line 1:
+ORA-00904: "IS EARNING SALARY AS ": invalid identifier 
+
+
+SQL> SELECT ENAME || 'IS EARNING SALARY AS ' || SAL
+  2  FROM EMP;
+
+ENAME||'ISEARNINGSALARYAS'||SAL                                                                     
+-----------------------------------------------------------------------                             
+SMITHIS EARNING SALARY AS 800                                                                       
+ALLENIS EARNING SALARY AS 1600                                                                      
+WARDIS EARNING SALARY AS 1250                                                                       
+JONESIS EARNING SALARY AS 2975                                                                      
+MARTINIS EARNING SALARY AS 1250                                                                     
+BLAKEIS EARNING SALARY AS 2850                                                                      
+CLARKIS EARNING SALARY AS 2450                                                                      
+SCOTTIS EARNING SALARY AS 3000                                                                      
+KINGIS EARNING SALARY AS 5000                                                                       
+TURNERIS EARNING SALARY AS 1500                                                                     
+ADAMSIS EARNING SALARY AS 1100                                                                      
+JAMESIS EARNING SALARY AS 950                                                                       
+FORDIS EARNING SALARY AS 3000                                                                       
+MILLERIS EARNING SALARY AS 1300                                                                     
+
+14 rows selected.
+
+SQL> --SMITH IS WORKING AS A CLERK HIRED ON 17-DEC 1980 EARNING SALARY AS 800 INN DEPT NO 20.
+SQL> SELECT * ENAME|| 'IS WORKING AS A ' ||JOB ||' HIRED ON ' ||HIREDATE || ' EARNING SALARY AS ' ||SAL || ' DEPARTMENT NO. ' || DEPTNO
+  2  FROM EMP;
+SELECT * ENAME|| 'IS WORKING AS A ' ||JOB ||' HIRED ON ' ||HIREDATE || ' EARNING SALARY AS ' ||SAL || ' DEPARTMENT NO. ' || DEPTNO
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL>  SELECT * ENAME|| 'IS WORKING AS A ' ||JOB ||' HIRED ON ' ||HIREDATE || ' EARNING SALARY AS ' |
+  2  
+SQL> SELECT ENAME|| 'IS WORKING AS A ' ||JOB ||' HIRED ON ' ||HIREDATE || ' EARNING SALARY AS ' || SAL || 'IN DEPARTMENT NO- '|| DEPTNO
+  2  FROM EMP;
+
+ENAME||'ISWORKINGASA'||JOB||'HIREDON'||HIREDATE||'EARNINGSALARYAS'||SAL||'INDEPARTMENTNO-'||DEPTNO  
+----------------------------------------------------------------------------------------------------
+SMITHIS WORKING AS A CLERK HIRED ON 17-DEC-80 EARNING SALARY AS 800IN DEPARTMENT NO- 20             
+ALLENIS WORKING AS A SALESMAN HIRED ON 20-FEB-81 EARNING SALARY AS 1600IN DEPARTMENT NO- 30         
+WARDIS WORKING AS A SALESMAN HIRED ON 22-FEB-81 EARNING SALARY AS 1250IN DEPARTMENT NO- 30          
+JONESIS WORKING AS A MANAGER HIRED ON 02-APR-81 EARNING SALARY AS 2975IN DEPARTMENT NO- 20          
+MARTINIS WORKING AS A SALESMAN HIRED ON 28-SEP-81 EARNING SALARY AS 1250IN DEPARTMENT NO- 30        
+BLAKEIS WORKING AS A MANAGER HIRED ON 01-MAY-81 EARNING SALARY AS 2850IN DEPARTMENT NO- 30          
+CLARKIS WORKING AS A MANAGER HIRED ON 09-JUN-81 EARNING SALARY AS 2450IN DEPARTMENT NO- 10          
+SCOTTIS WORKING AS A ANALYST HIRED ON 19-APR-87 EARNING SALARY AS 3000IN DEPARTMENT NO- 20          
+KINGIS WORKING AS A PRESIDENT HIRED ON 17-NOV-81 EARNING SALARY AS 5000IN DEPARTMENT NO- 10         
+TURNERIS WORKING AS A SALESMAN HIRED ON 08-SEP-81 EARNING SALARY AS 1500IN DEPARTMENT NO- 30        
+ADAMSIS WORKING AS A CLERK HIRED ON 23-MAY-87 EARNING SALARY AS 1100IN DEPARTMENT NO- 20            
+JAMESIS WORKING AS A CLERK HIRED ON 03-DEC-81 EARNING SALARY AS 950IN DEPARTMENT NO- 30             
+FORDIS WORKING AS A ANALYST HIRED ON 03-DEC-81 EARNING SALARY AS 3000IN DEPARTMENT NO- 20           
+MILLERIS WORKING AS A CLERK HIRED ON 23-JAN-82 EARNING SALARY AS 1300IN DEPARTMENT NO- 10           
+
+14 rows selected.
+
+SQL> SPOOL OFF;
